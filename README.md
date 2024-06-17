@@ -1,3 +1,6 @@
+# Description
+This project is forked from [yousufkalim/html-to-json](https://github.com/yousufkalim/html-to-json) and developed to fit Pugpig's tools.
+
 # HTML to JSON
 
 This library is capable to convert HTML string/element to JSON/JS Object or JSON to HTML.
