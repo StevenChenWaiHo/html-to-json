@@ -3,7 +3,7 @@
  * @author Yousuf Kalim
  */
 export default interface JSONContent {
-  type: string;
+  element: string;
   attributes?: object;
-  content: Array<string | JSONContent>;
+  children: Array<string | JSONContent>;
 }

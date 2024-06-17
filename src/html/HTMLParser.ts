@@ -30,19 +30,19 @@ async function HTMLParser(element: Element | string, json = false): Promise<JSON
 
       // Recursively loop through DOM elements and assign properties to object
       const treeHTML = (element: Element, object = treeObject): void => {
-        object.type = element.nodeName;
+        object.element = element.nodeName;
         const nodeList = element.childNodes;
         if (nodeList !== null) {
           if (nodeList.length) {
-            object.content = [];
+            object.children = [];
             for (let i = 0; i < nodeList.length; i++) {
               if (nodeList[i].nodeType === 3) {
                 if (nodeList[i].nodeValue) {
-                  object.content.push(nodeList[i].nodeValue);
+                  object.children.push(nodeList[i].nodeValue);
                 }
               } else {
-                object.content.push({});
-                treeHTML(nodeList[i] as Element, object.content[object.content.length - 1]);
+                object.children.push({});
+                treeHTML(nodeList[i] as Element, object.children[object.children.length - 1]);
               }
             }
           }

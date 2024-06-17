@@ -7,26 +7,26 @@ import { JSONContent } from '../types';
 
 /**
  * Converts JSON content to HTML string or HTML Document object
- * @param content The JSON or JS object to convert to HTML Element/String
+ * @param children The JSON or JS object to convert to HTML Element/String
  * @param string A boolean to indicate if the output should be an HTML Element or String.
  * @returns {Promise<string | Document>}
  */
 async function JSONToHTML(
-  content: JSONContent | string,
+  children: JSONContent | string,
   string = true, // default to returning a string representation
 ): Promise<string | Document> {
   return await new Promise((resolve, reject) => {
     try {
-      let jsonContent = content;
+      let jsonContent = children;
 
       // If input is a string, parse it as JSON
-      if (typeof content === 'string') {
-        jsonContent = JSON.parse(content) as JSONContent;
+      if (typeof children === 'string') {
+        jsonContent = JSON.parse(children) as JSONContent;
       }
 
       // Recursively construct HTML string from JSON content
       const treeJSON = (content: JSONContent): string => {
-        let html = `<${content.type}`; // Start with opening tag
+        let html = `<${content.element}`; // Start with opening tag
 
         // If there are attributes, add them to the tag
         if (content.attributes) {
@@ -37,8 +37,8 @@ async function JSONToHTML(
         html += '>';
 
         // If there is content, process it and add it to the tag
-        if (content.content) {
-          content.content.forEach((node) => {
+        if (content.children) {
+          content.children.forEach((node) => {
             if (typeof node === 'string') {
               html += node;
             } else {
@@ -48,7 +48,7 @@ async function JSONToHTML(
         }
 
         // End the tag
-        html += `</${content.type}>`;
+        html += `</${content.element}>`;
 
         return html;
       };
