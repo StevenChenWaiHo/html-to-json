@@ -2,12 +2,11 @@
     <div class="container">
         <textarea v-model="html" @change="handleChange" class="textbox" placeholder="Enter HTML here">{{ html }}</textarea>
         <button @click="handleClick" class="button">Convert to JSON</button>
-        <textarea readonly v-model="json" class="textbox" placeholder="JSON will apear here"><pre>{{ json }}</pre></textarea>
+        <textarea readonly v-model="json" class="textbox" placeholder="JSON will appear here"><pre>{{ json }}</pre></textarea>
     </div>
 </template>
 
 <script>
-import { handleError } from 'vue';
 import HTMLParser from '../utils/htmlToJson/src/html/HTMLParser.ts'
 export default {
     data() {
