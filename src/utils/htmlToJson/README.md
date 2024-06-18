@@ -1,0 +1,1 @@
+This utility function is adapted from [yousufkalim/html-to-json](https://github.com/yousufkalim/html-to-json)
